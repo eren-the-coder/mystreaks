@@ -1,4 +1,4 @@
-type RoutineHistory = Record<string, boolean>;
+import { type RoutineHistory } from "../types";
 
 export class Routine {
   private _id: string;
