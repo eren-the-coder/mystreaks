@@ -27,6 +27,14 @@ export class RoutineManager {
     return this._routines.find(r => r.id === routineId);
   }
 
+  get donesRoutinesCount() : number {
+    return this._routines.filter(r => r.isDoneToday()).length;
+  }
+
+  get undoneRoutinesCount() : number {
+    return this._routines.filter(r => !r.isDoneToday()).length;
+  }
+
   private loadRoutines(): Routine[] {
     try {
       const storedData = localStorage.getItem(this.STORAGE_KEY);
