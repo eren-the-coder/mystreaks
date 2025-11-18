@@ -9,6 +9,7 @@ interface RoutineContextType {
   undoneRoutinesCount: number;
   donesRoutinesCount: number;
   routinesCount: number;
+  routinesCompletionRate: number;
 };
 const RoutineContext = createContext<RoutineContextType>({
   routines: [],
@@ -17,6 +18,7 @@ const RoutineContext = createContext<RoutineContextType>({
   undoneRoutinesCount: 0,
   donesRoutinesCount: 0,
   routinesCount: 0,
+  routinesCompletionRate: 0,
 });
 
 export const RoutineProvider = ({ children }: { children: ReactNode }) => {
@@ -35,6 +37,7 @@ export const RoutineProvider = ({ children }: { children: ReactNode }) => {
   const donesRoutinesCount = routineManager.donesRoutinesCount;
   const undoneRoutinesCount = routineManager.undoneRoutinesCount;
   const routinesCount = routineManager.routinesCount;
+  const routinesCompletionRate = routineManager.routinesCompletionRate;
 
   return (
     <RoutineContext.Provider value={{
@@ -44,6 +47,7 @@ export const RoutineProvider = ({ children }: { children: ReactNode }) => {
       undoneRoutinesCount,
       donesRoutinesCount,
       routinesCount,
+      routinesCompletionRate,
     }}>
       {children}
     </RoutineContext.Provider>
