@@ -57,10 +57,10 @@ export class Routine {
 
   get completionRate(): number {
     const total = this.totalDates;
-    const percentage = ((this.doneDates / total) * 100).toFixed(2);
-    return total === 0 ? 0 : parseFloat(percentage);
+    if (total === 0) return 0;
+    return parseFloat(((this.doneDates / total) * 100).toFixed(2));
   }
-
+  
   get bestStreak(): number {
     return Object.keys(this._history)
       .sort((a, b) => new Date(a).getTime() - new Date(b).getTime())
