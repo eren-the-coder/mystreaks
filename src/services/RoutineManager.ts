@@ -1,7 +1,7 @@
 import { Routine } from "../domain/models/Routine";
 import type { RoutineData } from "../domain/types";
 
-class RoutineManager {
+export class RoutineManager {
   private _routines: Routine[];
   private readonly STORAGE_KEY = "routines_storage";
   
@@ -27,6 +27,10 @@ class RoutineManager {
     return this._routines.find(r => r.id === routineId);
   }
 
+  get routinesCount(): number {
+    return this._routines.length;
+  }
+  
   get donesRoutinesCount() : number {
     return this._routines.filter(r => r.isDoneToday()).length;
   }
