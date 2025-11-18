@@ -111,6 +111,11 @@ export class Routine {
     this._history = { ...this._history, [key]: done };
   }
 
+  toogleTodayStatus() {
+    const todayKey = this.formatDateKey(new Date());
+    this._history = { ...this._history, [todayKey]: !this.isDoneToday };
+  }
+
   // --------- HELPERS ----------
   /** Format date as YYYY-MM-DD */
   private formatDateKey(date: Date): string {
