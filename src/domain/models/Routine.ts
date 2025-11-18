@@ -93,8 +93,10 @@ export class Routine {
 
   // --------- HISTORY LOGIC ----------
   addDateToHistory(date: Date) {
-    const key = this.formatDateKey(date);
-    this._history = { ...this._history, [key]: false };
+  const key = this.formatDateKey(date);
+    if (!this._history[key]) {
+      this._history = { ...this._history, [key]: false };
+    }
   }
 
   setDateStatus(date: Date, done: boolean) {
