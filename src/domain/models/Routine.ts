@@ -43,6 +43,13 @@ export class Routine {
     return this._history;
   }
 
+  isDoneToday(): boolean {
+    const todayKey = this.formatDateKey(new Date());
+    return this._history[todayKey] === true;
+  }
+
+  // --------- STATS ----------
+
   get doneDates(): number {
     return Object.values(this._history).filter((done) => done).length;
   }
