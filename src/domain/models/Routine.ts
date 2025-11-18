@@ -80,21 +80,27 @@ export class Routine {
   }
 
   get currentStreak(): number {
-    // Sort the dates from newest to oldest
     const sortedDates = Object.keys(this._history).sort(
       (a, b) => new Date(b).getTime() - new Date(a).getTime()
     );
 
-    let streak = 0;
+    const todayKey = this.formatDateKey(new Date());
 
+    let streak = 0;
     for (const date of sortedDates) {
+      // On ignore la date d'aujourd'hui si elle est fausse,
+      // on ne veut pas qu'elle interrompe la série.
+      if (date === todayKey && !this._history[date]) {
+        continue;
+      }
+      
+      // On calcule la série à partir de la dernière date validée
       if (this._history[date]) {
         streak++;
       } else {
         break;
       }
     }
-
     return streak;
   }
 
