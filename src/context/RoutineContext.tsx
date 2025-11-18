@@ -6,11 +6,21 @@ interface RoutineContextType {
   routines: Routine[];
   addRoutine: (routine: Routine) => void;
   removeRoutine: (id: string) => void;
+  undoneRoutinesCount: number;
+  donesRoutinesCount: number;
+  routinesCount: number;
 };
-const RoutineContext = createContext<RoutineContextType | null>(null);
+const RoutineContext = createContext<RoutineContextType>({
+  routines: [],
+  addRoutine: () => {},
+  removeRoutine: () => {},
+  undoneRoutinesCount: 0,
+  donesRoutinesCount: 0,
+  routinesCount: 0,
+});
 
 export const RoutineProvider = ({ children }: { children: ReactNode }) => {
-  const [routines, setRoutines] = useState(routineManager.routines);
+  const [routines, setRoutines] = useState<Routine[]>(routineManager.routines);
 
   const addRoutine = (routine: Routine) => {
     routineManager.addRoutine(routine);
@@ -22,11 +32,22 @@ export const RoutineProvider = ({ children }: { children: ReactNode }) => {
     setRoutines([...routineManager.routines]);
   };
 
+  const donesRoutinesCount = routineManager.donesRoutinesCount;
+  const undoneRoutinesCount = routineManager.undoneRoutinesCount;
+  const routinesCount = routineManager.routinesCount;
+
   return (
-    <RoutineContext.Provider value={{ routines, addRoutine, removeRoutine }}>
+    <RoutineContext.Provider value={{
+      routines,
+      addRoutine,
+      removeRoutine,
+      undoneRoutinesCount,
+      donesRoutinesCount,
+      routinesCount,
+    }}>
       {children}
     </RoutineContext.Provider>
   );
 };
 
-export const useRoutines = () => useContext(RoutineContext);
+export const useRoutines = () => useContext<RoutineContextType>(RoutineContext);
