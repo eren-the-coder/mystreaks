@@ -1,5 +1,5 @@
-import { Routine } from "../src/domain/models/Routine";
-import type { RoutineData } from "../src/domain/types";
+import { Routine } from "../domain/models/Routine";
+import type { RoutineData } from "../domain/types";
 
 export class RoutineManager {
   private _routines: Routine[];
