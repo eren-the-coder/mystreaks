@@ -39,6 +39,11 @@ export class RoutineManager {
     return this._routines.filter(r => !r.isDoneToday()).length;
   }
 
+  get routinesCompletionRate(): number {
+    if (this.routinesCount === 0) return 0;
+    return parseFloat(((this.donesRoutinesCount / this.routinesCount * 100).toFixed(2)));
+  }
+
   private loadRoutines(): Routine[] {
     try {
       const storedData = localStorage.getItem(this.STORAGE_KEY);
