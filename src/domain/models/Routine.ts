@@ -12,7 +12,7 @@ export class Routine {
     description: string,
     history: RoutineHistory
   ) {
-    this._id = id;
+    this._id = id || new Date().getTime().toString();
     this._title = title;
     this._description = description;
     this._history = history;
