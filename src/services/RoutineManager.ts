@@ -32,11 +32,11 @@ export class RoutineManager {
   }
   
   get donesRoutinesCount() : number {
-    return this._routines.filter(r => r.isDoneToday()).length;
+    return this._routines.filter(r => r.isDoneToday).length;
   }
 
   get undoneRoutinesCount() : number {
-    return this._routines.filter(r => !r.isDoneToday()).length;
+    return this._routines.filter(r => !r.isDoneToday).length;
   }
 
   get routinesCompletionRate(): number {

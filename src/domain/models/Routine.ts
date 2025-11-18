@@ -43,7 +43,7 @@ export class Routine {
     return this._history;
   }
 
-  isDoneToday(): boolean {
+  get isDoneToday(): boolean {
     const todayKey = this.formatDateKey(new Date());
     return this._history[todayKey] === true;
   }
