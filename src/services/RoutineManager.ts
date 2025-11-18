@@ -1,7 +1,7 @@
 import { Routine } from "../domain/models/Routine";
 import type { RoutineData } from "../domain/types";
 
-export class RoutineManager {
+class RoutineManager {
   private _routines: Routine[];
   private readonly STORAGE_KEY = "routines_storage";
   
@@ -68,3 +68,5 @@ export class RoutineManager {
     localStorage.setItem(this.STORAGE_KEY, JSON.stringify(dataToSave));
   }
 }
+
+export const routineManager = new RoutineManager();
