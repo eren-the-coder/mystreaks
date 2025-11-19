@@ -43,7 +43,10 @@ export class RoutineManager {
     const total = routinesList.length;
     if (total === 0) return 0;
     const done = RoutineManager.getDonesCount(routinesList);
-    return parseFloat(((done / total * 100).toFixed(2)));
+    // Return percentage with no decimals
+    return Math.round((done / total) * 100);
+    // For decimal percentage, use:
+    // return parseFloat(((done / total * 100).toFixed(2)));
   }
 
   private loadRoutines(): Routine[] {
