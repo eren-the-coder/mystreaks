@@ -1,5 +1,5 @@
-import { createContext, useContext, useState, type ReactNode } from "react";
-import { routineManager } from "../services/RoutineManager";
+import { createContext, useContext, useState, useMemo, type ReactNode } from "react";
+import { routineManager, RoutineManager } from "../services/RoutineManager";
 import { Routine } from "../domain/models/Routine";
 
 interface RoutineContextType {
@@ -25,6 +25,7 @@ export const RoutineProvider = ({ children }: { children: ReactNode }) => {
   const [routines, setRoutines] = useState<Routine[]>(routineManager.routines);
 
   const addRoutine = (routine: Routine) => {
+    console.log("[(func)addRoutine] Adding routine:", routine);    
     routineManager.addRoutine(routine);
     setRoutines([...routineManager.routines]);
   };
@@ -34,10 +35,34 @@ export const RoutineProvider = ({ children }: { children: ReactNode }) => {
     setRoutines([...routineManager.routines]);
   };
 
-  const donesRoutinesCount = routineManager.donesRoutinesCount;
-  const undoneRoutinesCount = routineManager.undoneRoutinesCount;
-  const routinesCount = routineManager.routinesCount;
-  const routinesCompletionRate = routineManager.routinesCompletionRate;
+  const {
+    donesRoutinesCount,
+    undoneRoutinesCount,
+    routinesCount,
+    routinesCompletionRate
+  } = useMemo(() => {
+    
+    const totalCount = routines.length;
+    const doneCount = RoutineManager.getDonesCount(routines);
+    const undoneCount = RoutineManager.getUndoneCount(routines);
+    const completionRate = RoutineManager.getCompletionRate(routines);
+
+    console.log("Recalculating routine stats:", {
+      totalCount,
+      doneCount,
+      undoneCount,
+      completionRate
+    });
+    
+
+    return {
+      donesRoutinesCount: doneCount,
+      undoneRoutinesCount: undoneCount,
+      routinesCount: totalCount,
+      routinesCompletionRate: completionRate,
+    };
+    
+  }, [routines]);
 
   return (
     <RoutineContext.Provider value={{
@@ -54,4 +79,10 @@ export const RoutineProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export const useRoutines = () => useContext<RoutineContextType>(RoutineContext);
+export const useRoutines = () => {
+  const context = useContext<RoutineContextType>(RoutineContext);
+  if (!context) {
+    throw new Error("useRoutines must be used within a RoutineProvider");
+  }
+  return context;
+};
