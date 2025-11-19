@@ -1,11 +1,13 @@
-
 import React from 'react';
+import { Home } from './ui/pages/Home/Home.tsx';
+import { RoutineProvider } from './context/RoutineContext.tsx'
 
 const App: React.FC = () => {
+
   return (
-    <div>
-      <h1>Welcome</h1>
-    </div>
+    <RoutineProvider>
+      <Home />      
+    </RoutineProvider>
   );
 };
 
