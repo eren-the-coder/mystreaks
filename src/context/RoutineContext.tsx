@@ -25,7 +25,6 @@ export const RoutineProvider = ({ children }: { children: ReactNode }) => {
   const [routines, setRoutines] = useState<Routine[]>(routineManager.routines);
 
   const addRoutine = (routine: Routine) => {
-    console.log("[(func)addRoutine] Adding routine:", routine);    
     routineManager.addRoutine(routine);
     setRoutines([...routineManager.routines]);
   };
@@ -47,12 +46,12 @@ export const RoutineProvider = ({ children }: { children: ReactNode }) => {
     const undoneCount = RoutineManager.getUndoneCount(routines);
     const completionRate = RoutineManager.getCompletionRate(routines);
 
-    console.log("Recalculating routine stats:", {
-      totalCount,
-      doneCount,
-      undoneCount,
-      completionRate
-    });
+    // console.log("Recalculating routine stats:", {
+    //   totalCount,
+    //   doneCount,
+    //   undoneCount,
+    //   completionRate
+    // });
     
 
     return {
