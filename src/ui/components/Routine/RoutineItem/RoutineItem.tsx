@@ -1,26 +1,25 @@
 import styles from "./RoutineItem.module.css";
 import type { Routine } from "../../../../domain/models/Routine";
-import { useState } from "react";
 import { useId } from "react";
+import { useRoutines } from "../../../../context/RoutineContext";
 
 interface RoutineItemProps {
   routine: Routine;
 }
 
 export const RoutineItem = ({ routine }: RoutineItemProps) => {
-  const [checked, setChecked] = useState(routine.isDoneToday);
+  const { toggleRoutineStatus } = useRoutines();
   const id = useId();
   return (
     <div className={styles.item}>
       <div className={styles.left}>
         <input
           type="checkbox"
-          checked={checked}
+          checked={routine.isDoneToday}
           id={id}
           className={styles.checkbox}
           onChange={() => {
-            routine.toogleTodayStatus();
-            setChecked(routine.isDoneToday);
+            toggleRoutineStatus(routine.id);
           }}
         />
         <div className={styles.texts}>
