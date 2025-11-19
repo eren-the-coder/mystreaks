@@ -6,6 +6,7 @@ interface RoutineContextType {
   routines: Routine[];
   addRoutine: (routine: Routine) => void;
   removeRoutine: (id: string) => void;
+  toggleRoutineStatus: (id: string) => void;
   undoneRoutinesCount: number;
   donesRoutinesCount: number;
   routinesCount: number;
@@ -19,6 +20,7 @@ const RoutineContext = createContext<RoutineContextType>({
   donesRoutinesCount: 0,
   routinesCount: 0,
   routinesCompletionRate: 0,
+  toggleRoutineStatus: () => {}
 });
 
 export const RoutineProvider = ({ children }: { children: ReactNode }) => {
@@ -34,6 +36,15 @@ export const RoutineProvider = ({ children }: { children: ReactNode }) => {
     setRoutines([...routineManager.routines]);
   };
 
+  const toggleRoutineStatus = (id: string) => {
+    const routine = routineManager.getRoutineById(id);
+    if (routine) {
+      routine.toogleTodayStatus();
+      routineManager.saveRoutines(); 
+      setRoutines([...routineManager.routines]); 
+    }
+  };
+
   const {
     donesRoutinesCount,
     undoneRoutinesCount,
@@ -44,15 +55,7 @@ export const RoutineProvider = ({ children }: { children: ReactNode }) => {
     const totalCount = routines.length;
     const doneCount = RoutineManager.getDonesCount(routines);
     const undoneCount = RoutineManager.getUndoneCount(routines);
-    const completionRate = RoutineManager.getCompletionRate(routines);
-
-    // console.log("Recalculating routine stats:", {
-    //   totalCount,
-    //   doneCount,
-    //   undoneCount,
-    //   completionRate
-    // });
-    
+    const completionRate = RoutineManager.getCompletionRate(routines);    
 
     return {
       donesRoutinesCount: doneCount,
@@ -68,6 +71,7 @@ export const RoutineProvider = ({ children }: { children: ReactNode }) => {
       routines,
       addRoutine,
       removeRoutine,
+      toggleRoutineStatus,
       undoneRoutinesCount,
       donesRoutinesCount,
       routinesCount,
