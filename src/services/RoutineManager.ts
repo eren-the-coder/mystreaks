@@ -68,7 +68,7 @@ export class RoutineManager {
     }
   }
 
-  private saveRoutines() {
+  public saveRoutines() {
     const dataToSave = this._routines.map(r => ({
       id: r.id,
       title: r.title,
