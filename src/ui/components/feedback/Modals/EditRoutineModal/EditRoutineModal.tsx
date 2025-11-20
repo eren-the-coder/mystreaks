@@ -1,44 +1,60 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // @ts-ignore
 import Modal from "react-modal";
 import styles from "./EditRoutineModal.module.css";
 import { Routine } from "../../../../../domain/models/Routine";
+import { routineManager } from "../../../../../services/RoutineManager";
 
 Modal.setAppElement("#root");
 
 interface FormDataType {
   title: string;
   description: string;
-  error: string;
 }
 
 interface EditRoutineModalProps {
+  routineId?: string;
   modalIsOpen: boolean;
   closeModal: () => void;
   onSubmit: (data: Routine) => void;
 }
 
 export const EditRoutineModal = ({
+  routineId,
   modalIsOpen,
   closeModal,
   onSubmit,
 }: EditRoutineModalProps) => {
+  const existingRoutine = routineManager.getRoutineById(routineId || "");
+
   const [formDatas, setFormDatas] = useState<FormDataType>({
     title: "",
     description: "",
-    error: "",
   });
 
+  useEffect(() => {
+    if (existingRoutine) {
+      setFormDatas({
+        title: existingRoutine.title,
+        description: existingRoutine.description,
+      });
+    } else {
+      setFormDatas({ title: "", description: "" });
+    }
+  }, [existingRoutine, routineId, modalIsOpen]);
+
   const handleSubmit = () => {
-    onSubmit(
-      new Routine(
-        "",
-        formDatas.title,
-        formDatas.description,
-        {}
-      )
+    const routineHistory = existingRoutine ? existingRoutine.history : {};
+    
+    const submittedRoutine = new Routine(
+      routineId || "",
+      formDatas.title,
+      formDatas.description,
+      routineHistory
     );
-    resetAndClose();
+
+    onSubmit(submittedRoutine);
+    closeModal(); 
   };
 
   const handleChange = (
@@ -48,12 +64,7 @@ export const EditRoutineModal = ({
     setFormDatas((prev) => ({ ...prev, [name]: value }));
   };
 
-  const clearForm = () => {
-    setFormDatas({ title: "", description: "", error: "" });
-  };
-
   const resetAndClose = () => {
-    clearForm();
     closeModal();
   };
 
@@ -66,7 +77,7 @@ export const EditRoutineModal = ({
       shouldCloseOnOverlayClick={true}
     >
       <header className={styles.header}>
-        <h2 className={styles.title}>Modifier la routine</h2>
+        <h2 className={styles.title}>{routineId ? "Modifier la routine" : "Ajouter une routine"}</h2>
         <button onClick={resetAndClose} className={styles.closeBtn}>
           ✕
         </button>
@@ -79,10 +90,6 @@ export const EditRoutineModal = ({
           handleSubmit();
         }}
       >
-        {formDatas.error && (
-          <span className={styles.error}>{formDatas.error}</span>
-        )}
-
         <input
           type="text"
           name="title"
