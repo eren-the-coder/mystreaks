@@ -25,10 +25,9 @@ export const Details = () => {
   // Détermination emoji selon score
   const streak = routine.currentStreak;
   const getStreakEmoji = () => {
-    if (streak >= 15) return "🔥🔥"; // excellent
-    if (streak >= 10) return "🔥"; // très bon
-    if (streak >= 5) return "💪"; // bon
-    if (streak >= 3) return "🙂"; // moyen
+    if (streak >= 5) return "🔥"; // très bon
+    if (streak >= 3) return "🤩"; // bon
+    if (streak === 2) return "💪"; // moyen
     return "😴"; // faible
   };
 
