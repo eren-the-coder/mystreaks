@@ -80,14 +80,14 @@ export const Details = () => {
           </div>
 
           <div>
-            <progress
-              className={styles.progressBar}
-              value={routine.currentStreak}
-              max={routine.bestStreak || 1}
-            />
-            <div className={styles.progressLabels}>
-              <span>0%</span>
-              <span>100%</span>
+            <div className={styles.progressContainer}>
+              <div className={styles.progressBar}
+                style={{
+                  width: `${routine.completionRate}%`,
+                }}
+              >
+                {routine.completionRate}%
+              </div>
             </div>
           </div>
         </section>
