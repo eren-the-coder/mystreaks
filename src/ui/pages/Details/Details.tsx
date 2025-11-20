@@ -8,6 +8,7 @@ import { useModal } from "../../hooks/useModal";
 import { EditRoutineModal } from "../../components/feedback/Modals/EditRoutineModal/EditRoutineModal";
 import type { Routine } from "../../../domain/models/Routine";
 import { DeleteRoutineModal } from "../../components/feedback/Modals/DeleteRoutineModal/DeleteRoutineModal";
+import { formatDuration } from "../../../utilis/durationFomatter";
 
 export const Details = () => {
   const { toggleRoutineStatus, updateRoutine, removeRoutine } = useRoutines();
@@ -79,6 +80,18 @@ export const Details = () => {
             <details className={styles.statsDetails}>
               <summary>Statistiques</summary>
               <ul>
+                <li>
+                  <details> 
+                    <summary>Sessions</summary> 
+                    <ul>
+                      {routine.lastDayHistory?.sessions?.map((session, index) => (
+                        <li key={index}>
+                          {session.name} - {formatDuration(session.duration)}
+                        </li>
+                      ))}
+                    </ul> 
+                  </details> 
+                </li>
                 <li>Série actuelle : {routine.currentStreak} jours</li>
                 <li>Meilleure série : {routine.bestStreak} jours</li>
                 <li>{routine.doneDates} sur {routine.totalDates} jours respectés</li>
