@@ -4,32 +4,18 @@ export interface Citation {
 }
 
 const citations: Citation[] = [
-  // Discipline & Travail
   { text: "La discipline est le pont entre les objectifs et l'accomplissement.", author: "Jim Rohn" },
-  { text: "Le succès n'est pas la clé du bonheur. Le bonheur est la clé du succès. Si vous aimez ce que vous faites, vous réussirez.", author: "Albert Schweitzer" },
   { text: "Le travail acharné bat le talent quand le talent ne travaille pas dur.", author: "Tim Notke" },
   { text: "La seule façon de faire du bon travail est d'aimer ce que vous faites.", author: "Steve Jobs" },
   { text: "La motivation vous fait démarrer, l'habitude vous fait continuer.", author: "Jim Ryun" },
   { text: "Ne remettez jamais à demain ce que vous pouvez faire aujourd'hui.", author: "Benjamin Franklin" },
-  
-  // Argent & Abondance
   { text: "Si vous voulez être riche, pensez à épargner autant qu'à gagner.", author: "Benjamin Franklin" },
   { text: "L'argent ne fait pas le bonheur, mais il y contribue fortement.", author: "Coluche" },
   { text: "Le risque vient de ne pas savoir ce que l'on fait.", author: "Warren Buffett" },
   { text: "Pour réussir, votre désir de réussite doit être plus grand que votre peur de l'échec.", author: "Bill Cosby" },
   { text: "Investissez en vous-même. C'est le meilleur investissement que vous ferez.", author: "Warren Buffett" },
-  {
-    text: "La discipline bat toujours la motivation.",
-    author: "Inconnu"
-  },
-  {
-    text: "Travaille en silence, laisse ton succès faire le bruit.",
-    author: "Frank Ocean"
-  },
-  {
-    text: "Tu dois choisir : souffrir de la discipline ou souffrir du regret.",
-    author: "Jim Rohn"
-  },
+  { text: "Travaille en silence, laisse ton succès faire le bruit.", author: "Frank Ocean" },
+  { text: "Tu dois choisir : souffrir de la discipline ou souffrir du regret.", author: "Jim Rohn" },
   {
     text: "Chaque minute que tu passes distrait t’éloigne de la vie que tu veux vraiment.",
     author: "Inconnu"
@@ -37,10 +23,6 @@ const citations: Citation[] = [
   {
     text: "Fais ce que la plupart ne feront jamais, et tu vivras comme la plupart ne vivront jamais.",
     author: "Inconnu"
-  },
-  {
-    text: "Le succès n’est pas donné, il est loué. Et le loyer est dû chaque jour.",
-    author: "J.J. Watt"
   },
   {
     text: "Tu ne seras jamais payé au-dessus de ta valeur actuelle. Alors augmente ta valeur.",
@@ -71,10 +53,6 @@ const citations: Citation[] = [
     author: "Inconnu"
   },
   {
-    text: "L’argent suit la discipline, pas l’impulsivité.",
-    author: "Inconnu"
-  },
-  {
     text: "La version de toi dans 5 ans dépend de ce que tu fais aujourd’hui.",
     author: "Inconnu"
   },
@@ -91,14 +69,9 @@ const citations: Citation[] = [
     author: "Inconnu"
   },
   {
-    text: "Étudie comme si tu étais fauché. Investis comme si tu étais riche.",
-    author: "Inconnu"
-  },
-  {
     text: "Personne ne viendra te sauver. C'est ton travail de devenir la meilleure version de toi-même.",
     author: "Inconnu"
   },
-
   {
     text: "Travaille jusqu’à ce que ton idole devienne ton rival.",
     author: "Inconnu"
@@ -109,10 +82,6 @@ const citations: Citation[] = [
   },
   {
     text: "Personne ne devient riche en étant confortable.",
-    author: "Inconnu"
-  },
-  {
-    text: "Le grind ne trahit jamais.",
     author: "Inconnu"
   },
   {
@@ -140,15 +109,7 @@ const citations: Citation[] = [
     author: "Inconnu"
   },
   {
-    text: "Tu n’as pas besoin de permission pour devenir puissant.",
-    author: "Inconnu"
-  },
-  {
     text: "Chaque heure qui passe peut soit te rapprocher du million, soit t’en éloigner.",
-    author: "Inconnu"
-  },
-  {
-    text: "Les distractions sont l’impôt que tu paies pour ne pas être discipliné.",
     author: "Inconnu"
   },
   {
@@ -176,14 +137,6 @@ const citations: Citation[] = [
     author: "Steve Martin"
   },
   {
-    text: "Le grind de maintenant devient le luxe de demain.",
-    author: "Inconnu"
-  },
-  {
-    text: "Reste pauvre en excuses. Riche en actions.",
-    author: "Inconnu"
-  },
-  {
     text: "La discipline te paiera plus que n’importe quel job.",
     author: "Inconnu"
   },
@@ -195,20 +148,14 @@ const citations: Citation[] = [
     text: "Les millionnaires lisent. Les autres scrollent.",
     author: "Inconnu"
   },
-  {
-    text: "Plus tu deviens dangereux, plus la vie devient facile.",
-    author: "Inconnu"
-  },
   { text: "Reste focussé. Le reste attend.", author: "Inconnu" },
   { text: "Travaille. Améliore-toi. Recommence demain.", author: "Inconnu" },
   { text: "Moins parler, plus construire.", author: "Inconnu" },
   { text: "La discipline crée les résultats.", author: "Inconnu" },
   { text: "Arrête de rêver. Commence à agir.", author: "Inconnu" },
   { text: "Le progrès aime le silence.", author: "Inconnu" },
-  { text: "Ignore tout. Avance fort.", author: "Inconnu" },
   { text: "Fais plus. Dis moins.", author: "Inconnu" },
   { text: "Le temps travaille contre toi.", author: "Inconnu" },
-  { text: "Reste dangereux. Reste concentré.", author: "Inconnu" },
   { text: "Chaque seconde perdue t’appauvrit.", author: "Inconnu" },
   { text: "La procrastination détruit plus que l’échec.", author: "Inconnu" },
   { text: "Pendant que tu hésites, d’autres gagnent.", author: "Inconnu" },
@@ -261,19 +208,9 @@ const citations: Citation[] = [
   { text: "Ce qui arrive devait arriver.", author: "Stoïcisme" },
   { text: "Ton esprit décide de tout.", author: "Stoïcisme" },
   {
-    text: "Si tu veux avancer, écrase tes limites.",
+    text: "Si tu veux avancer, repousse tes limites.",
     author: "Eren Yeager",
   },
-  {
-    text: "Le monde ne te doit rien. Prends ce que tu veux.",
-    author: "Levi Ackerman",
-  },
-  {
-    text: "La discipline bat la peur.",
-    author: "Mikasa Ackerman",
-  },
-
-  // Naruto
   {
     text: "Travaille pendant que les autres dorment.",
     author: "Rock Lee",
@@ -286,8 +223,6 @@ const citations: Citation[] = [
     text: "Ta volonté forge ton destin.",
     author: "Kakashi Hatake",
   },
-
-  // One Piece
   {
     text: "Si tu veux devenir fort, sacrifie ton confort.",
     author: "Roronoa Zoro",
@@ -300,8 +235,6 @@ const citations: Citation[] = [
     text: "Le vrai pouvoir vient de la patience.",
     author: "Jinbe",
   },
-
-  // Dragon Ball
   {
     text: "Garde ton esprit aiguisé. Le reste suivra.",
     author: "Goku",
@@ -310,8 +243,6 @@ const citations: Citation[] = [
     text: "Le progrès exige solitude et discipline.",
     author: "Vegeta",
   },
-
-  // Jujutsu Kaisen
   {
     text: "La douleur n'est qu'un rappel que tu vis encore.",
     author: "Sukuna",
@@ -320,8 +251,6 @@ const citations: Citation[] = [
     text: "Un esprit calme est une arme invincible.",
     author: "Gojo Satoru",
   },
-
-  // Demon Slayer
   {
     text: "La persévérance transforme les faibles en légendes.",
     author: "Tanjiro Kamado",
@@ -330,8 +259,6 @@ const citations: Citation[] = [
     text: "Coupe ce qui t'empêche d'avancer.",
     author: "Giyu Tomioka",
   },
-
-  // Vinland Saga
   {
     text: "L'homme libre est celui qui maîtrise lui-même.",
     author: "Thorfinn",
@@ -340,18 +267,10 @@ const citations: Citation[] = [
     text: "Endure. Deviens meilleur. Recommence.",
     author: "Askeladd",
   },
-
-  // Solo Leveling
   {
     text: "Personne ne viendra te sauver. Deviens plus fort.",
     author: "Sung Jin-Woo",
   },
-  {
-    text: "Le pouvoir se gagne, jamais il ne se demande.",
-    author: "Sung Jin-Woo",
-  },
-
-  // Bleach
   {
     text: "Le seul ennemi réel, c’est toi-même.",
     author: "Ichigo Kurosaki",
@@ -360,8 +279,6 @@ const citations: Citation[] = [
     text: "Le silence et l’effort donnent des résultats.",
     author: "Byakuya Kuchiki",
   },
-
-  // Hunter x Hunter
   {
     text: "Le talent sans discipline est inutile.",
     author: "Killua Zoldyck",
@@ -370,14 +287,10 @@ const citations: Citation[] = [
     text: "Poursuis ton objectif, même seul.",
     author: "Kurapika",
   },
-
-  // Mob Psycho 100
   {
     text: "La vraie force est intérieure.",
     author: "Shigeo (Mob)",
   },
-
-  // Code Geass
   {
     text: "Le pouvoir appartient à ceux qui osent le prendre.",
     author: "Lelouch Lamperouge",
@@ -385,11 +298,6 @@ const citations: Citation[] = [
   {
     text: "Le contrôle de soi est une arme.",
     author: "Lelouch Lamperouge",
-  },
-  // ===== SASUKE PACK (solitude / vengeance / discipline) =====
-  {
-    text: "Je marche seul. Le chemin n’a pas besoin d’être compris.",
-    author: "Sasuke Uchiha"
   },
   {
     text: "La solitude forge une détermination que personne ne peut briser.",
@@ -407,8 +315,6 @@ const citations: Citation[] = [
     text: "Si tu veux la force, accepte la douleur.",
     author: "Sasuke Uchiha"
   },
-
-  // ===== HAJIME NO IPPO (effort pur / sacrifice / endurance) =====
   {
     text: "Un pas de plus. Toujours un pas de plus.",
     author: "Ippo Makunouchi"
@@ -421,8 +327,6 @@ const citations: Citation[] = [
     text: "Travaille en silence. L’arène parlera pour toi.",
     author: "Takamura Mamoru"
   },
-
-  // ===== MY HERO ACADEMIA =====
   {
     text: "Lève-toi, même quand ton corps dit non.",
     author: "Deku"
@@ -435,8 +339,6 @@ const citations: Citation[] = [
     text: "L’excuse n’existe pas pour celui qui veut devenir le meilleur.",
     author: "Bakugo Katsuki"
   },
-
-  // ===== MOB PSYCHO 100 (maîtrise de soi / stoïcisme) =====
   {
     text: "Le contrôle de soi est ta plus grande force.",
     author: "Shigeo (Mob)"
@@ -445,8 +347,6 @@ const citations: Citation[] = [
     text: "Reste calme. Tu avanceras plus loin que les autres.",
     author: "Shigeo (Mob)"
   },
-
-  // ===== ONE PUNCH MAN =====
   {
     text: "La routine. La discipline. Le progrès.",
     author: "Saitama"
@@ -463,8 +363,6 @@ const citations: Citation[] = [
     text: "L’amélioration commence quand l’excuse disparaît.",
     author: "Genos"
   },
-
-  // ===== ATTACK ON TITAN =====
   {
     text: "Avance. Peu importe ce que tu dois écraser.",
     author: "Eren Yeager"
@@ -481,8 +379,6 @@ const citations: Citation[] = [
     text: "Les regrets viennent de l’inaction — pas de l’effort.",
     author: "Hange Zoe"
   },
-
-  // ===== JUJUTSU KAISEN =====
   {
     text: "Endure la douleur. Elle te rend plus dangereux.",
     author: "Yuji Itadori"
@@ -495,8 +391,6 @@ const citations: Citation[] = [
     text: "Le monde appartient à ceux qui supportent l’obscurité.",
     author: "Sukuna"
   },
-
-  // ===== DORORO =====
   {
     text: "Je n’avais rien. Alors je suis devenu tout.",
     author: "Hyakkimaru"
@@ -546,14 +440,6 @@ const citations: Citation[] = [
     author: "Thomas Shelby"
   },
   {
-    text: "Le monde n’offre rien. Prends ce qui est à toi.",
-    author: "Thomas Shelby"
-  },
-  {
-    text: "Un plan bien exécuté vaut plus que mille mots.",
-    author: "Thomas Shelby"
-  },
-  {
     text: "Travaille dans l’ombre. L’effet dans la lumière sera brutal.",
     author: "Thomas Shelby"
   },
@@ -590,7 +476,6 @@ const citations: Citation[] = [
     author: "Thomas Shelby"
   },
   { text: "L’argent ne dort jamais. Toi non plus.", author: "Thomas Shelby" },
-  { text: "Le pouvoir se prend, jamais il n’est donné.", author: "Thomas Shelby" },
   { text: "Chaque mouvement doit servir ton empire.", author: "Thomas Shelby" },
   { text: "Investis dans toi. Le reste suivra.", author: "Thomas Shelby" },
   { text: "Les opportunités ne frappent pas. Elles se créent.", author: "Thomas Shelby" },
@@ -605,7 +490,6 @@ const citations: Citation[] = [
   { text: "Ignore-les tous et avance.", author: "Thomas Shelby" },
   { text: "Les faibles crient. Les forts agissent.", author: "Thomas Shelby" },
   { text: "Aucune loyauté pour ceux qui trahissent.", author: "Thomas Shelby" },
-  { text: "La vengeance est un plat que je mange froid.", author: "Thomas Shelby" },
   { text: "Rien ne m’arrêtera. Personne.", author: "Thomas Shelby" },
   { text: "Fais ce que tu veux. Qu’ils crient.", author: "Thomas Shelby" },
   { text: "Seul le pouvoir compte. Tout le reste est distraction.", author: "Thomas Shelby" },
