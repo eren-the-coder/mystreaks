@@ -63,6 +63,10 @@
   transition: background 0.25s ease, box-shadow 0.25s ease;
 }
 
+.sectionCard:nth-last-child(1) {
+  border-bottom: none;
+}
+
 .routineTitle {
   font-size: 1.3rem;
   font-weight: 600;
