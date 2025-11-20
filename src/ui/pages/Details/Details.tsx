@@ -11,7 +11,7 @@ export const Details = () => {
   const { routineId } = useParams<{ routineId: string }>();
   const navigate = useNavigate();
 
-  const routine = routineManager.getRoutineById(routineId || "1763536396625");
+  const routine = routineManager.getRoutineById(routineId || "");
 
   if (!routine) {
     return <div className={styles.notFound}>Routine introuvable</div>;
