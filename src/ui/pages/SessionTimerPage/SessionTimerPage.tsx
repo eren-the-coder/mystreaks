@@ -51,7 +51,7 @@ export const SessionTimerPage = () => {
   const handleStop = () => {
     if (seconds > 0 && routineId) {
       saveRoutineSession(routineId, seconds, sessionName || 'Session sans nom');
-      alert(`Session de ${formatTime(seconds)} enregistrée !`);
+      // alert(`Session de ${formatTime(seconds)} enregistrée !`);
     }
     setIsRunning(false);
     setIsPaused(false);
