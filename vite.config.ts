@@ -9,11 +9,11 @@ export default defineConfig({
       registerType: 'autoUpdate',
       manifest: {
         name: 'Track your steak',
-        short_name: 'MyStreak',
+        short_name: 'MyStreaks',
         start_url: '.',
         display: 'standalone',
-        background_color: '#ffffff',
-        theme_color: '#4CAF50',
+        background_color: '#111827',
+        theme_color: '#111827',
         icons: [
           {
             src: 'icons/icon-192.png',
