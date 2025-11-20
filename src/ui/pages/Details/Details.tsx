@@ -1,4 +1,4 @@
-// import { useRoutines } from "../../../context/RoutineContext";
+import { useRoutines } from "../../../context/RoutineContext";
 import { StreakCalendar } from "../../components/StreakCalendar/StreakCalendar";
 import { useNavigate, useParams } from "react-router-dom";
 import { routineManager } from "../../../services/RoutineManager";
@@ -6,7 +6,7 @@ import styles from "./Details.module.css";
 import { ArrowLeft, Check, Pencil, Trash2 } from "lucide-react";
 
 export const Details = () => {
-  // const { routines } = useRoutines();
+  const { toggleRoutineStatus } = useRoutines();
 
   const { routineId } = useParams<{ routineId: string }>();
   const navigate = useNavigate();
@@ -40,7 +40,12 @@ export const Details = () => {
         </div>
 
         <div className={styles.headerRight}>
-          <button className={styles.iconBtn}><Check size={20} /></button>
+          <button
+            onClick={() => toggleRoutineStatus(routine.id)}
+            className={styles.iconBtn}
+          >
+            {routine.isDoneToday ? <Check size={20} /> : <Check size={20} style={{ opacity: 0.3 }} />}
+          </button>
           <button className={styles.iconBtn}><Pencil size={20} /></button>
           <button className={styles.iconBtnDelete}><Trash2 size={20} /></button>
         </div>
