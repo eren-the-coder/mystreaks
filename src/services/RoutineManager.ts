@@ -55,6 +55,14 @@ export class RoutineManager {
     // return parseFloat(((done / total * 100).toFixed(2)));
   }
 
+  public saveSession(routineId: string, durationInSeconds: number, sessionName: string = ''): void {
+    const routine = this.getRoutineById(routineId);
+    if (routine) {
+      routine.addSession(new Date(), { name: sessionName, duration: durationInSeconds });
+      this.saveRoutines(); // Sauvegarde les changements
+    }
+  }
+
   private loadRoutines(): Routine[] {
     try {
       const storedData = localStorage.getItem(this.STORAGE_KEY);
