@@ -14,7 +14,7 @@ export class RoutineManager {
   }
 
   addRoutine(routine: Routine) {
-    this._routines = [...this._routines, routine];
+    this._routines = [routine, ...this._routines];
     this.saveRoutines();
   }
 
