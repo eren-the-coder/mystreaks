@@ -69,6 +69,16 @@ export class RoutineManager {
       }
       
       const routines = stored.map(r => new Routine(r.id, r.title, r.description, r.history));
+
+      // Appeler fillMissingDays après le chargement ⭐️
+      routines.forEach(routine => {
+          routine.fillMissingDays();
+      });
+      
+      // Important : sauvegarder immédiatement, l'historique a peut-être changé
+      this._routines = [...routines]; // Mettre à jour l'état interne avant de sauvegarder
+      this.saveRoutines();
+
       return routines;
 
     } catch (error) {
