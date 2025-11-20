@@ -121,6 +121,17 @@ export class Routine {
     // Si la clé existe, on ne fait rien car le statut est déjà enregistré (true ou false)
   }
 
+  public get lastDayHistory(): DayHistory | undefined {
+    const dates = Object.keys(this._history);
+    if (dates.length === 0) return undefined;
+
+    // Trie pour trouver la dernière date
+    const sortedDates = dates.sort((a, b) => new Date(a).getTime() - new Date(b).getTime());
+    const lastDateKey = sortedDates[sortedDates.length - 1];
+    
+    return this._history[lastDateKey];
+  }
+
   setDateStatus(date: Date, done: boolean) {
     const key = this.formatDateKey(date);
     this._history = { ...this._history, [key]: {
