@@ -12,9 +12,7 @@ export const RoutineItem = ({ routine }: RoutineItemProps) => {
   const navigate = useNavigate();
   return (
     <div
-      onClick={() => {
-        navigate(`/details/${routine.id}`);
-      }}
+      
       className={styles.item}
     >
       <div className={styles.left}>
@@ -26,7 +24,12 @@ export const RoutineItem = ({ routine }: RoutineItemProps) => {
             toggleRoutineStatus(routine.id);
           }}
         />
-        <div className={styles.texts}>
+        <div
+          onClick={() => {
+            navigate(`/details/${routine.id}`);
+          }}
+          className={styles.texts}
+        >
           <h2 className={styles.title}>
             {routine.title}
           </h2>
