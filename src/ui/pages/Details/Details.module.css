@@ -90,6 +90,14 @@ summary:hover {
   background: var(--surface-hover);
 }
 
+.emptySession {
+  margin-left: 28px;
+  color: var(--text-secondary);
+  font-style: italic;
+  border-left: 2px solid gray;
+  padding-left: 10px;
+}
+
 ul {
   list-style: none;
   padding-left: 10px;

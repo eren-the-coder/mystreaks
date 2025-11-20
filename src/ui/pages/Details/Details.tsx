@@ -89,7 +89,10 @@ export const Details = () => {
                           {session.name} - {formatDuration(session.duration)}
                         </li>
                       ))}
-                    </ul> 
+                    </ul>
+                    {!routine.lastDayHistory?.sessions?.length && (
+                      <p className={styles.emptySession}>Aucune session enregistrée.</p>
+                    )}
                   </details> 
                 </li>
                 <li>Série actuelle : {routine.currentStreak} jours</li>
