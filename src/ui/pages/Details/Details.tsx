@@ -7,13 +7,19 @@ import { ArrowLeft, Check, Pencil, Trash2 } from "lucide-react";
 import { useModal } from "../../hooks/useModal";
 import { EditRoutineModal } from "../../components/feedback/Modals/EditRoutineModal/EditRoutineModal";
 import type { Routine } from "../../../domain/models/Routine";
+import { DeleteRoutineModal } from "../../components/feedback/Modals/DeleteRoutineModal/DeleteRoutineModal";
 
 export const Details = () => {
-  const { toggleRoutineStatus, updateRoutine } = useRoutines();
+  const { toggleRoutineStatus, updateRoutine, removeRoutine } = useRoutines();
 
   const { routineId } = useParams<{ routineId: string }>();
   const navigate = useNavigate();
   const { isOpen, closeModal, openModal } = useModal();
+  const {
+    isOpen: isDeleteOpen,
+    openModal: openDeleteModal,
+    closeModal: closeDeleteModal
+  } = useModal();
 
 
   const routine = routineManager.getRoutineById(routineId || "");
@@ -22,13 +28,12 @@ export const Details = () => {
     return <div className={styles.notFound}>Routine introuvable</div>;
   }
 
-  // Détermination emoji selon score
   const streak = routine.currentStreak;
   const getStreakEmoji = () => {
-    if (streak >= 5) return "🔥"; // très bon
-    if (streak >= 3) return "🤩"; // bon
-    if (streak === 2) return "💪"; // moyen
-    return "😴"; // faible
+    if (streak >= 5) return "🔥";
+    if (streak >= 3) return "🤩";
+    if (streak === 2) return "💪";
+    return "😴";
   };
 
   return (
@@ -57,7 +62,12 @@ export const Details = () => {
             >
               <Pencil size={20} />
             </button>
-            <button className={styles.iconBtnDelete}><Trash2 size={20} /></button>
+            <button
+              onClick={openDeleteModal}
+              className={styles.iconBtnDelete}
+            >
+              <Trash2 size={20} />
+            </button>
           </div>
         </header>
 
@@ -119,6 +129,16 @@ export const Details = () => {
         closeModal={closeModal}
         onSubmit={(routine: Routine) => {
           updateRoutine(routine);
+        }}
+      />
+      <DeleteRoutineModal
+        modalIsOpen={isDeleteOpen}
+        closeModal={closeDeleteModal}
+        onDelete={(isConfirmed: boolean) => {
+          if (isConfirmed) {
+            removeRoutine(routine.id);
+            navigate(-1);
+          }
         }}
       />
     </>
