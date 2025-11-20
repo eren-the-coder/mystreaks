@@ -7,7 +7,7 @@ export const HomeHeader = () => {
 
   return (
     <header className={styles.header}>
-      <h1 className={styles.title}>MyStreaks</h1>
+      <h1 className={styles.title}>MyStreaks.</h1>
 
       <button
         className={styles.themeButton}
