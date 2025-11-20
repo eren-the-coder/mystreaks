@@ -5,6 +5,7 @@ import { Routine } from "../domain/models/Routine";
 interface RoutineContextType {
   routines: Routine[];
   addRoutine: (routine: Routine) => void;
+  updateRoutine: (routine: Routine) => void;
   removeRoutine: (id: string) => void;
   toggleRoutineStatus: (id: string) => void;
   undoneRoutinesCount: number;
@@ -15,6 +16,7 @@ interface RoutineContextType {
 const RoutineContext = createContext<RoutineContextType>({
   routines: [],
   addRoutine: () => {},
+  updateRoutine: () => {},
   removeRoutine: () => {},
   undoneRoutinesCount: 0,
   donesRoutinesCount: 0,
@@ -30,6 +32,11 @@ export const RoutineProvider = ({ children }: { children: ReactNode }) => {
     routineManager.addRoutine(routine);
     setRoutines([...routineManager.routines]);
   };
+
+  const updateRoutine = (routine: Routine) => {
+    routineManager.updateRoutine(routine);
+    setRoutines([...routineManager.routines]);
+  }
 
   const removeRoutine = (id: string) => {
     routineManager.removeRoutine(id);
@@ -70,6 +77,7 @@ export const RoutineProvider = ({ children }: { children: ReactNode }) => {
     <RoutineContext.Provider value={{
       routines,
       addRoutine,
+      updateRoutine,
       removeRoutine,
       toggleRoutineStatus,
       undoneRoutinesCount,
