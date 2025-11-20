@@ -65,7 +65,8 @@ export class Routine {
   get completionRate(): number {
     const total = this.totalDates;
     if (total === 0) return 0;
-    return parseFloat(((this.doneDates / total) * 100).toFixed(2));
+    // return parseFloat(((this.doneDates / total) * 100).toFixed(2));
+    return Math.round((this.doneDates / total) * 100);
   }
   
   get bestStreak(): number {
