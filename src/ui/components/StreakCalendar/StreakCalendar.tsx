@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import type { RoutineHistory } from "../../../domain/types";
 import styles from "./StreakCalendar.module.css";
+import type { DayHistory } from "../../../domain/types";
 
 const months = [
   'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
@@ -91,13 +92,13 @@ export const StreakCalendar = (
 
         <div className={styles.calendarGrid}>
           {calendarDaysInfo.map((dayInfo, index) => {
-            const status = routineHistory[dayInfo.dateKey];
+            const status: DayHistory | undefined = routineHistory[dayInfo.dateKey];
 
             let content: React.ReactNode;
 
-            if (status === true) {
+            if (status?.done === true) {
               content = '🔥';
-            } else if (status === false) {
+            } else if (status?.done === false) {
               content = '🧊';
             } else {
               content = dayInfo.day;
