@@ -37,6 +37,16 @@
   cursor: pointer;
 }
 
+.timerButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  font-size: 1.2rem;
+  color: var(--accent-color);
+  margin-left: 10px;
+}
+
 .title {
   font-size: 1.15rem;
   font-weight: 600;
