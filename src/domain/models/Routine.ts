@@ -50,18 +50,13 @@ export class Routine {
 
   // --------- STATS ----------
 
-  // src/domain/models/Routine.ts
-
   get doneDates(): number {
-    // Correction : accède à la propriété .done de chaque objet DayHistory
     return Object.values(this._history).filter(dayInfo => dayInfo.done === true).length;
   }
 
   get undoneDates(): number {
-    // Correction : accède à la propriété .done de chaque objet DayHistory
     return Object.values(this._history).filter(dayInfo => dayInfo.done === false).length;
   }
-
 
   get totalDates(): number {
     return Object.keys(this._history).length;
@@ -77,7 +72,6 @@ export class Routine {
     return Object.keys(this._history)
       .sort((a, b) => new Date(a).getTime() - new Date(b).getTime())
       .reduce(
-        // Correction : vérifier this._history[date]?.done
         ({ max, current }, date) => this._history[date]?.done === true
           ? { max: Math.max(max, current + 1), current: current + 1 }
           : { max, current: 0 },
@@ -94,7 +88,6 @@ export class Routine {
 
     let streak = 0;
     for (const date of sortedDates) {
-      // Correction : vérifier explicitement le done status
       const isDone = this._history[date]?.done === true;
 
       // On ignore la date d'aujourd'hui si elle est fausse
