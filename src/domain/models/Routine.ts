@@ -122,6 +122,31 @@ export class Routine {
     this._history = { ...this._history, [todayKey]: !this.isDoneToday };
   }
 
+  public fillMissingDays(): void {
+    const sortedDates = Object.keys(this._history).sort();
+    // Si l'historique est vide, on s'arrête ici, pas de jours manquants à remplir.
+    if (sortedDates.length === 0) {
+        return;
+    }
+
+    let currentDate = new Date(sortedDates[sortedDates.length - 1]);
+    currentDate.setDate(currentDate.getDate() + 1); // Commencer à partir du jour suivant le dernier enregistré
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Normaliser aujourd'hui à minuit
+
+    // Tant que la date que nous vérifions est antérieure à aujourd'hui
+    while (currentDate < today) {
+      const key = this.formatDateKey(currentDate);
+      // Si la date n'est pas déjà dans l'histoire (elle ne devrait pas l'être si la logique est bonne)
+      if (!(key in this._history)) {
+          this._history = { ...this._history, [key]: false };
+      }
+      // Passer au jour suivant
+      currentDate.setDate(currentDate.getDate() + 1);
+    }
+  }
+
   // --------- HELPERS ----------
   /** Format date as YYYY-MM-DD */
   private formatDateKey(date: Date): string {
