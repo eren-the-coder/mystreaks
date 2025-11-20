@@ -17,6 +17,12 @@ export class RoutineManager {
     this._routines = [...this._routines, routine];
     this.saveRoutines();
   }
+
+  updateRoutine(routine: Routine) {
+    this._routines = this._routines.map(r => r.id === routine.id ? routine : r);
+    console.table(this._routines);
+    this.saveRoutines();
+  }
  
   removeRoutine(routineId: string) {
     this._routines = this._routines.filter(r => r.id !== routineId);
