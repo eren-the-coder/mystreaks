@@ -2,6 +2,7 @@ import styles from "./RoutineItem.module.css";
 import type { Routine } from "../../../../domain/models/Routine";
 import { useId } from "react";
 import { useRoutines } from "../../../../context/RoutineContext";
+import { useNavigate } from "react-router";
 
 interface RoutineItemProps {
   routine: Routine;
@@ -9,9 +10,15 @@ interface RoutineItemProps {
 
 export const RoutineItem = ({ routine }: RoutineItemProps) => {
   const { toggleRoutineStatus } = useRoutines();
+  const navigate = useNavigate();
   const id = useId();
   return (
-    <div className={styles.item}>
+    <div
+      onClick={() => {
+        navigate(`/details/${routine.id}`);
+      }}
+      className={styles.item}
+    >
       <div className={styles.left}>
         <input
           type="checkbox"
