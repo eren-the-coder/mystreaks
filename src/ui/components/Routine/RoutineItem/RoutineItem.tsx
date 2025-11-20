@@ -1,6 +1,5 @@
 import styles from "./RoutineItem.module.css";
 import type { Routine } from "../../../../domain/models/Routine";
-import { useId } from "react";
 import { useRoutines } from "../../../../context/RoutineContext";
 import { useNavigate } from "react-router";
 
@@ -11,7 +10,6 @@ interface RoutineItemProps {
 export const RoutineItem = ({ routine }: RoutineItemProps) => {
   const { toggleRoutineStatus } = useRoutines();
   const navigate = useNavigate();
-  const id = useId();
   return (
     <div
       onClick={() => {
@@ -23,16 +21,15 @@ export const RoutineItem = ({ routine }: RoutineItemProps) => {
         <input
           type="checkbox"
           checked={routine.isDoneToday}
-          id={id}
           className={styles.checkbox}
           onChange={() => {
             toggleRoutineStatus(routine.id);
           }}
         />
         <div className={styles.texts}>
-          <label htmlFor={id} className={styles.title}>
+          <h2 className={styles.title}>
             {routine.title}
-          </label>
+          </h2>
 
           <div className={styles.subtitle}>{routine.description}</div>
           <div className={styles.streak}>série de {routine.currentStreak} jours</div>
