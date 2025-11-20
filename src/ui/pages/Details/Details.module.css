@@ -76,15 +76,10 @@
 
 .statsDetails summary {
   cursor: pointer;
-  list-style: none;
   padding: 12px 14px;
   background: var(--surface-secondary);
-  border-radius: 12px;
   font-weight: 600;
   color: var(--accent-color);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   transition: background 0.25s ease;
 }
 summary:hover {
