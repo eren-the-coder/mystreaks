@@ -6,6 +6,7 @@ import { FabAddRoutine } from "../../components/FabAddRoutine/FabAddRoutine";
 import { EditRoutineModal } from "../../components/feedback/Modals/EditRoutineModal/EditRoutineModal";
 import { useRoutines } from "../../../context/RoutineContext";
 import { useModal } from "../../hooks/useModal";
+import { Motivation } from "../../components/Motivation/Motivation";
 
 export const Home = () => {
   const { isOpen, closeModal, openModal } = useModal();
@@ -15,6 +16,7 @@ export const Home = () => {
     <div>
       <HomeHeader />
       <RoutineStats />
+      <Motivation />
       <RoutineList />
       <FabAddRoutine onPress={openModal} />
       <EditRoutineModal
