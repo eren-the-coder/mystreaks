@@ -81,6 +81,7 @@ export const Details = () => {
               <ul>
                 <li>Série actuelle : {routine.currentStreak} jours</li>
                 <li>Meilleure série : {routine.bestStreak} jours</li>
+                <li>{routine.doneDates} sur {routine.totalDates} jours respectés</li>
                 <li>Taux de complétion : {routine.completionRate}%</li>
               </ul>
             </details>
