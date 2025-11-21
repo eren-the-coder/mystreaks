@@ -9,6 +9,7 @@ interface RoutineContextType {
   removeRoutine: (id: string) => void;
   saveRoutineSession: (routineId: string, durationInSeconds: number, sessionName: string) => void;
   toggleRoutineStatus: (id: string) => void;
+  setUndoneReason: (routineId: string, dateKey: string, reason: string) => void;
   undoneRoutinesCount: number;
   donesRoutinesCount: number;
   routinesCount: number;
@@ -20,6 +21,7 @@ const RoutineContext = createContext<RoutineContextType>({
   updateRoutine: () => {},
   removeRoutine: () => {},
   saveRoutineSession: () => {},
+  setUndoneReason: () => {},
   undoneRoutinesCount: 0,
   donesRoutinesCount: 0,
   routinesCount: 0,
@@ -63,6 +65,13 @@ export const RoutineProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  const setUndoneReason = (routineId: string, dateKey: string, reason: string) => {
+    const routine = routineManager.getRoutineById(routineId);
+    routine?.setUndoneReason(dateKey, reason);
+    routineManager.saveRoutines();
+    // setRoutines([...routineManager.routines]);
+  }
+
   const {
     donesRoutinesCount,
     undoneRoutinesCount,
@@ -92,6 +101,7 @@ export const RoutineProvider = ({ children }: { children: ReactNode }) => {
       removeRoutine,
       toggleRoutineStatus,
       saveRoutineSession,
+      setUndoneReason,
       undoneRoutinesCount,
       donesRoutinesCount,
       routinesCount,
