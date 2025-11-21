@@ -8,6 +8,7 @@ export interface RoutineSession {
 export interface DayHistory {
   done: boolean;
   sessions?: RoutineSession[];
+  undoneReason?: string;
 }
 
 export type RoutineHistory = Record<string, DayHistory>;
