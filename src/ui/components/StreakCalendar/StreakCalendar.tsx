@@ -128,6 +128,9 @@ export const StreakCalendar = ({
                   status: status?.done ?? null,
                   dateKey: dayInfo.dateKey || null
                 })}
+                style={{
+                  fontSize: (status?.done === true || status?.done === false) ? '1.5rem' : '0.8rem',
+                }}
               >
                 {content}
               </div>
