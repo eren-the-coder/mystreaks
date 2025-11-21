@@ -20,7 +20,7 @@ Qu’il s’agisse de sport, lecture, révision, méditation ou finance : MyStre
 
 ## 🖼️ **Aperçus d'Interface**
 
-| Accueil                               | Calendrier                                   | Chronomètre                           | Statistiques                         |
+| Accueil                               | Statistiques                                   | Calendrier                           | Chronomètre                         |
 | ------------------------------------- | -------------------------------------------- | ------------------------------------- | ------------------------------------ |
 | ![Aperçu accueil](./previews/1-home.png) | ![Aperçu calendrier](./previews/2-details.png) | ![Aperçu chrono](./previews/3-details.png) | ![Aperçu stats](./previews/4-timer.png) |
 
