@@ -9,9 +9,11 @@ import { EditRoutineModal } from "../../components/feedback/Modals/EditRoutineMo
 import type { Routine } from "../../../domain/models/Routine";
 import { DeleteRoutineModal } from "../../components/feedback/Modals/DeleteRoutineModal/DeleteRoutineModal";
 import { formatDuration } from "../../../utilis/durationFomatter";
+import { EditUndoneReasonModal } from "../../components/feedback/Modals/EditUndoneReasonModal/EditUndoneReasonModal";
+import { useState } from "react";
 
 export const Details = () => {
-  const { toggleRoutineStatus, updateRoutine, removeRoutine } = useRoutines();
+  const { toggleRoutineStatus, updateRoutine, removeRoutine, setUndoneReason } = useRoutines();
 
   const { routineId } = useParams<{ routineId: string }>();
   const navigate = useNavigate();
@@ -21,6 +23,13 @@ export const Details = () => {
     openModal: openDeleteModal,
     closeModal: closeDeleteModal
   } = useModal();
+  const {
+    isOpen: isEditReasonOpen,
+    openModal: openEditReasonModal,
+    closeModal: closeEditReasonModal
+  } = useModal();
+
+  const [dateKey, setDateKey] = useState<string | null>(null);
 
 
   const routine = routineManager.getRoutineById(routineId || "");
@@ -136,7 +145,14 @@ export const Details = () => {
 
           <section className={styles.sectionCard}>
             <h3>Calendrier de série</h3>
-            <StreakCalendar routineHistory={routine.history} />
+            <StreakCalendar
+              routineHistory={routine.history}
+              onDayClick={({ status, dateKey }) => {
+                if (status === null || status || !dateKey) return;
+                setDateKey(dateKey);
+                openEditReasonModal();
+              }}
+            />
           </section>
         </main>
       </div>
@@ -157,6 +173,16 @@ export const Details = () => {
             navigate(-1);
           }
         }}
+      />
+      <EditUndoneReasonModal
+        modalIsOpen={isEditReasonOpen}
+        closeModal={closeEditReasonModal}
+        routineId={routine.id}
+        onSubmit={(reason: string) => {
+          if (dateKey)
+            setUndoneReason(routine.id, dateKey, reason);
+        }}
+        dateKey={dateKey}
       />
     </>
   );
