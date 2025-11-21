@@ -48,6 +48,10 @@ export class Routine {
     return this._history[todayKey]?.done === true;
   }
 
+  setUndoneReason(dateKey: string, reason: string) {
+    this._history[dateKey].undoneReason = reason;
+  }
+
   // --------- STATS ----------
 
   get doneDates(): number {
