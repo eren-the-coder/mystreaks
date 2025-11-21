@@ -9,9 +9,21 @@ const months = [
 ];
 const days = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
 
-export const StreakCalendar = (
-  { routineHistory }: { routineHistory: RoutineHistory }
-) => {
+interface StreakCalendarProps {
+  routineHistory: RoutineHistory;
+  onDayClick: ({
+    dateKey,
+    status
+  } : {
+    dateKey: string | null,
+    status: boolean | null
+  }) => void;
+}
+
+export const StreakCalendar = ({
+  routineHistory,
+  onDayClick
+}: StreakCalendarProps) => {
 
   const date = useMemo(() => new Date(), []);
   const [month, setMonth] = useState(date.getMonth());
@@ -109,7 +121,14 @@ export const StreakCalendar = (
               : styles.dayFaded;
 
             return (
-              <div key={index} className={className}>
+              <div
+                key={index}
+                className={className}
+                onClick={() => onDayClick({
+                  status: status?.done ?? null,
+                  dateKey: dayInfo.dateKey || null
+                })}
+              >
                 {content}
               </div>
             );
